@@ -3,8 +3,8 @@ Version:
 
 Requirement Module:
 ```
-	BeautifulSoup
-	chardet
+	1.BeautifulSoup
+	2.chardet
 ```
 
 Execute:
