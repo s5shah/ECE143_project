@@ -19,7 +19,7 @@ def scrape_gva(data):
         scrape the officers killing data.
     
     Output :-
-    {year}.csv file containing: Incident Date, State, City/County, #killed, #injured
+    Mass_Shootings_{year}.csv / Officers_Shootings_{year}.csv file containing: Incident Date, State, City/County, #killed, #injured
     
     The function takes in a year as input and returns a csv file that contains the above mentioned data from
     "www.gunviolencearchive.org" website.

@@ -1,18 +1,17 @@
 from selenium import webdriver
+from bs4 import BeautifulSoup
+import numpy as np
+import pandas as pd
+import bs4
 
 chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--disable-infobars")
-chrome_options.add_argument("--start-maximized")
+chrome_options.add_argument("--headless")
 
-def scrape_etr(year):
-    '''
-    Input :-
-    year - type: int, range: 2013 - 2019 (inclusive)
+def scrape_etr():
+    '''Output :-
+    School_Shootings_{year}.csv file containing: Date, City, State, School Name, School Type
     
-    Output :-
-    {year}.csv file containing: Date, City, State, School Name, School Type
-    
-    The function takes in a year as input and returns a csv file that contains the above mentioned data from
+    The function generates csv files for different years, from 2013 till date, that contains the above mentioned data from
     "www.everytownresearch.org" website.
     The data is specific to gun violence incidents in schools throughout United States.
     
@@ -21,13 +20,28 @@ def scrape_etr(year):
         2. google chrome installed
         3. chromedriver path added to path variables.
     '''
-    assert year in range(2013, 2020)
-    
     driver = webdriver.Chrome(options = chrome_options)
     driver.get("https://everytownresearch.org/gunfire-in-school/")
     
-    element = driver.find_element_by_css_selector(f".btn-year[data-year = '{year}']")
-    element.click()
-    
     #Scrape here
+    stuff = []
+    soup = BeautifulSoup(driver.page_source)
+    table = soup.find('table', {'class': 'row-border stripe dataTable no-footer'})
+    links = table.findAll('td')
     
+    for link in links:
+        if type(link.contents[0]) == bs4.element.NavigableString:
+            stuff.append(link.contents[0])
+    #Scraping done
+    #Create data frame from stuff that was collected
+    df = pd.DataFrame(np.array(stuff).reshape(int((len(stuff))/5), 5), columns = ['Date', 'City', 'State', 'School Name', 'School Type'])
+    
+    #Generate an extra column called years to make groups
+    df['Year'] = 0
+    for i in range(len(df['Date'])):
+        df['Year'][i] = df['Date'][i][-4:]
+    
+    #Generate a grouped dataframe and write the groups to their respective csv files    
+    df_grouped = df.groupby('Year')
+    for i in df_grouped.indices:
+        df_grouped.get_group(i).to_csv(f'School_Schootings_{i}.csv', encoding='utf-8', index=False, columns = ['Date', 'City', 'State', 'School Name', 'School Type'])
