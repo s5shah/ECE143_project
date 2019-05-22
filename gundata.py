@@ -6,12 +6,10 @@ class gundata:
 	'''
 	A class which defines several functions to deal with gun violence data(mass shooting) 
 	'''
-	def __init__(self,datatype,year):
-		assert isinstance(year,int),"invalid year"
-		assert isinstance(datatype,str),"datatype should be Mass_shootings,Officers_Shootings,School_Schootings"
-		assert 2014<=year<=2019,"Only 2014-2019 mass shooting data available"
+	def __init__(self,df,datatype):
+		assert isinstance(df,pd.core.frame.DataFrame),"input should be DataFrame"
 		self.datatype = datatype
-		self.data = pd.read_csv(f"Scrape/{datatype}_{year}.csv")
+		self.data = df
 		self.monthlist = {12:'Dec',11:'Nov',10:'Oct',9:'Sep',8:"Aug",7:"Jul",6:"Jun",5:"May",4:"Apr",3:"Mar",2:"Feb",1:"Jan"}
 
 	def get_total_insidence(self,month=None):
@@ -43,6 +41,14 @@ class gundata:
 				else:
 					res.append(len(self.data.loc[self.data['Incident Date'].str.contains(self.monthlist[i])]))
 			return res
+
+	def count_by_colume(self,col):
+		'''
+		return number count by state of dataframe
+		'''
+		assert col in self.data.columns,"col does not exist"
+		return dict(self.data[col].value_counts())
+
 
 	#To be updated,sum
 
