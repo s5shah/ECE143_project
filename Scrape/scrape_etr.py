@@ -4,11 +4,9 @@ import numpy as np
 import pandas as pd
 import bs4
 
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--headless")
-
 def scrape_etr():
-    '''Output :-
+    '''
+    Output :-
     School_Shootings_{year}.csv file containing: Date, City, State, School Name, School Type
     
     The function generates csv files for different years, from 2013 till date, that contains the above mentioned data from
@@ -20,7 +18,7 @@ def scrape_etr():
         2. google chrome installed
         3. chromedriver path added to path variables.
     '''
-    driver = webdriver.Chrome(options = chrome_options)
+    driver = webdriver.Chrome()
     driver.get("https://everytownresearch.org/gunfire-in-school/")
     
     #Scrape here
@@ -32,7 +30,8 @@ def scrape_etr():
     for link in links:
         if type(link.contents[0]) == bs4.element.NavigableString:
             stuff.append(link.contents[0])
-    #Scraping done
+    #Scraping 
+    driver.close()
     #Create data frame from stuff that was collected
     df = pd.DataFrame(np.array(stuff).reshape(int((len(stuff))/5), 5), columns = ['Date', 'City', 'State', 'School Name', 'School Type'])
     

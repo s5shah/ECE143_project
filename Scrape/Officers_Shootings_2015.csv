@@ -189,12 +189,12 @@ Incident Date,State,City/County,Address,# killed,# injured
 "May 21, 2015",Louisiana,Monroe,3034 US-80,0,1
 "May 20, 2015",Nebraska,Omaha,30th and Martin,2,0
 "May 20, 2015",Tennessee,Knoxville,3207 Magnolia Avenue,0,1
-"May 19, 2015",Pennsylvania,Lancaster,300 block of East Chestnut Street,1,1
-"May 17, 2015",Florida,St Petersburg,5236 Robin Lane N,1,2
+"May 19, 2015",Pennsylvania,Lancaster,305 E Chestnut St,1,1
+"May 17, 2015",Florida,Saint Petersburg (St Petersburg),5236 Robin Lane N,1,2
 "May 17, 2015",California,San Diego,Annrae Street and Mesa College Drive,1,1
 "May 17, 2015",Mississippi,Jackson,Northside Drive and Bailey Avenue,0,1
-"May 16, 2015",Michigan,Boyne City,Addis Road,0,1
 "May 16, 2015",Michigan,Boyne City,S Addis Rd and Dam Rd,0,2
+"May 16, 2015",Michigan,Boyne City,Addis Road,0,1
 "May 15, 2015",Arkansas,Johnson (county),County Road 1723,1,1
 "May 15, 2015",Texas,Amarillo,3001 Snowball Trail,0,1
 "May 14, 2015",South Carolina,Moncks Corner,101 N Highway 52,0,1
@@ -204,28 +204,26 @@ Incident Date,State,City/County,Address,# killed,# injured
 "May 6, 2015",Alaska,Tuluksak,N/A,0,3
 "May 6, 2015",North Carolina,Concord,4300 block of Irish Potato Road,0,1
 "May 5, 2015",Idaho,Coeur D Alene (Coeur D'alene),2800 block of W Wilbur Ave,1,0
-"May 3, 2015",Missouri,Kansas City,7100 Eastwood Trafficway,0,2
 "May 3, 2015",Texas,Garland,4999 Naaman Forest Blvd,2,1
 "May 3, 2015",Illinois,Chicago,300 block of West 103rd Place,0,2
 "May 2, 2015",North Carolina,Cornelius,19400 block of Coachmans Trace,0,1
 "May 2, 2015",New York,Queens,Hollis Avenue and 212th Street,1,0
-"April 23, 2015",Oklahoma,Rufe,182 N 4430 Rd,1,2
 "April 23, 2015",Oklahoma,Rufe,182 North 4430 Road,1,2
 "April 23, 2015",Pennsylvania,Philadelphia,51st and Master,0,2
+"April 23, 2015",Oklahoma,Rufe,182 N 4430 Rd,1,2
 "April 20, 2015",California,Fresno,West Hayes and South Central Avenues,0,1
 "April 20, 2015",California,Delano,2737 West Cecil Avenue,0,1
 "April 18, 2015",Arizona,Phoenix,20th Street and Thomas Road,1,1
 "April 17, 2015",California,Sacramento,500 block of I street,0,1
-"April 17, 2015",Missouri,Saint Louis,4100 block of Newstead,1,0
-"April 17, 2015",New York,Wheatfield,6871 Errick Road,1,3
+"April 17, 2015",New York,North Tonawanda (Wheatfield),6871 Errick Road,1,3
 "April 16, 2015",Louisiana,Paradis,Louisiana St. and U.S. 90,0,1
 "April 15, 2015",Illinois,Edwardsville,322 S. Fillmore St.,0,2
 "April 12, 2015",Indiana,Indianapolis,3800 block of East 31st Street,1,2
 "April 10, 2015",Maryland,Annapolis,703 E. College Parkway,0,1
+"April 9, 2015",District of Columbia,Washington,1100 block of H Street,1,2
 "April 9, 2015",Maryland,Suitland,4600 Silver Hill Rd,1,1
-"April 9, 2015",District of Columbia,Washington,1100 block of H Street,0,2
 "April 6, 2015",Florida,Ocala,11120 NW Gainesville Rd,1,0
-"April 3, 2015",Louisiana,Slidell,First St and Cousin St,0,3
+"April 3, 2015",Louisiana,Slidell,First St and Cousin St,0,1
 "April 2, 2015",Texas,Houston,West Belfort,0,1
 "April 2, 2015",Tennessee,Memphis,900 block of Hester Road,0,1
 "March 31, 2015",South Carolina,West Columbia,300 block of Hudson Street,0,1
@@ -250,8 +248,8 @@ Incident Date,State,City/County,Address,# killed,# injured
 "March 6, 2015",Florida,Melrose,Putnam Loop Rd,1,1
 "March 5, 2015",Virginia,Shenandoah,127 N West Turn Rd.,0,2
 "March 5, 2015",Pennsylvania,Philadelphia,2101 West Lehigh Avenue,1,1
-"March 4, 2015",Georgia,Fairburn,7200 block of Parks Trail,1,2
 "March 4, 2015",Kansas,Kansas City,4400 block of of Shawnee Drive,0,1
+"March 4, 2015",Georgia,Fairburn,7200 block of Parks Trail,1,2
 "March 3, 2015",Florida,Lake Wales,743 Hillside Ave,0,3
 "February 28, 2015",California,Merced,21st and H street,0,2
 "February 28, 2015",Texas,Houston,Irvington and Yorkshire,0,1
@@ -263,9 +261,7 @@ Incident Date,State,City/County,Address,# killed,# injured
 "February 18, 2015",Illinois,Bridgeview,10220 South 76th Avenue,0,1
 "February 17, 2015",New York,Brooklyn,9720 Kings Highway,0,1
 "February 15, 2015",Mississippi,Iuka,1110 Battleground Dr,1,1
-"February 15, 2015",Florida,Miami Gardens,NW 192nd Street and 3rd Avenue,1,0
 "February 14, 2015",Maryland,Baltimore,702 and Hyde Park Road,1,1
-"February 12, 2015",Texas,Houston,5800 block of Westheimer,1,0
 "February 12, 2015",Virginia,Isle Of Wight County,8700 block of Smithfield Apartments Lane,0,1
 "February 11, 2015",Michigan,Norway,118 West 11th Street,0,2
 "February 10, 2015",Tennessee,Memphis,4500 block of Aldridge Road,1,1
@@ -283,7 +279,7 @@ Incident Date,State,City/County,Address,# killed,# injured
 "January 29, 2015",Texas,Fort Worth,4800 block of Hildring Dr E,1,1
 "January 28, 2015",Texas,Harris County,12800 block of East Freeway,0,2
 "January 26, 2015",Missouri,Springfield,Glenstone Avenue and Chestnut Expressway,0,1
-"January 26, 2015",Minnesota,New Hope,4401 Xylon Avenue North,1,2
+"January 26, 2015",Minnesota,Minneapolis (New Hope),4401 Xylon Avenue North,1,2
 "January 26, 2015",Arizona,Morenci,U.S. Highway 191,1,2
 "January 23, 2015",Michigan,Flint,G3277 Miller Rd,0,2
 "January 23, 2015",Texas,Waco,3201 E State Highway 6,0,1

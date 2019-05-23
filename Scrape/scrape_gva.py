@@ -5,9 +5,6 @@ import numpy as np
 import pandas as pd
 import bs4
 
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--headless")
-
 def scrape_gva(data):
     '''
     Input :-
@@ -21,8 +18,8 @@ def scrape_gva(data):
     Output :-
     Mass_Shootings_{year}.csv / Officers_Shootings_{year}.csv file containing: Incident Date, State, City/County, #killed, #injured
     
-    The function takes in a year as input and returns a csv file that contains the above mentioned data from
-    "www.gunviolencearchive.org" website.
+    The function takes in a year as input and returns a csv file that contains the above mentioned data from "www.gunviolencearchive.org"
+    website.
     The data is specific to either mass shootings or shootings involving police officers throughout United States.
     
     To run this program, you need the following:
@@ -42,7 +39,7 @@ def scrape_gva(data):
             url = f"https://www.gunviolencearchive.org/reports/officer-shot-killed?year={year}"
             fname = f"Officers_Shootings_{year}.csv"
         
-        driver = webdriver.Chrome(options = chrome_options)
+        driver = webdriver.Chrome()
         driver.get(url)
     
         stuff = []
