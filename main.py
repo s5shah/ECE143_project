@@ -59,11 +59,11 @@ class data:
 
 		state_dict = state.count_by_colume('State')
 		ylabel = list(state_dict.keys())[0:10]
-		ylabel.append('others')
+		ylabel.append('others_ave')
 		ylabel.reverse()
 		y_pos = np.arange(11)
 		performance = list(state_dict.values())[0:10]
-		performance.append(len(state.data)-sum(performance))
+		performance.append((len(state.data)-sum(performance))/(len(state_dict)-10))
 		performance.reverse()
 		error = np.random.rand(11)
 		ax.clear()
