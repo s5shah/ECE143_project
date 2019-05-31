@@ -4,6 +4,7 @@ import numpy as np
 from gundata import gundata
 import pandas as pd
 import holoviews as hv
+from matplotlib.widgets import Slider, Button, RadioButtons
 hv.extension('bokeh')
 
 class data:
@@ -431,18 +432,59 @@ class data:
         edata = hv.Dataset(data=b,kdims=['state'])
         edata.to(hv.Bars,'state','percentage',groupby='year').options(height=200)
         return edata
+    def top10_pie(self):
+        global ax,fig,risk
+        state_dict = self.data2014.count_by_colume('State')
+        x = list(state_dict.values())[0:10]
+        x.append(sum(list(state_dict.values())[10:]))
+        labels = list(state_dict.keys())[0:10] 
+        labels.append('others')
+        fig, ax = plt.subplots(2)
+
+        # draw the initial pie chart
+        ax[0].pie(x = x,labels = labels,labeldistance=1.1,autopct = '%3.2f%%',colors=['#FF0400','#FFFC00','#45D304','#07D09C','#36D3FD','#2C02FE','#FD02FE','#FC50D8','#F18EB1','#D0D6D5','#eeefff'])
+        ax[0].set_position([0.25,0.4,.5,.5])
+
+        # create the slider
+        ax[1].set_position([0.25, 0.35, 0.5, 0.03])
+        risk = Slider(ax[1], 'year',2014, 2019, valinit=2014,valstep=1)
+
+        risk.on_changed(self.update)
+        plt.show()
 
 
-
-
-
+    def update(self,val):
+        ax[0].clear()
+        year = int(risk.val)
+        #print(year)
         
+        if year == None:
+            state_dict = self.dataall.count_by_colume('State')
+        if year == 2014:
+            state_dict = self.data2014.count_by_colume('State')
+        if year == 2015:
+            state_dict = self.data2015.count_by_colume('State')
+        if year == 2016:
+            state_dict = self.data2016.count_by_colume('State')
+        if year == 2017:
+            state_dict = self.data2017.count_by_colume('State')
+        if year == 2018:
+            state_dict = self.data2018.count_by_colume('State')
+        if year == 2019:
+            state_dict = self.data2019.count_by_colume('State')
+        x = list(state_dict.values())[0:10]
+        x.append(sum(list(state_dict.values())[10:]))
+
+        labels = list(state_dict.keys())[0:10] 
+        labels.append('others')
+        ax[0].pie(x = x,labels = labels,labeldistance=1.1,autopct = '%3.2f%%',colors=['#FF0400','#FFFC00','#45D304','#07D09C','#36D3FD','#2C02FE','#FD02FE','#FC50D8','#F18EB1','#D0D6D5','#eeefff'])
+        fig.canvas.draw_idle()
 
 
 
-        
 
-        
+
+
 
 
 
