@@ -368,15 +368,15 @@ class data:
         if year == 2014:
             state_dict = self.data2014.count_by_colume('State')
         if year == 2015:
-            state_dict = self.data2014.count_by_colume('State')
+            state_dict = self.data2015.count_by_colume('State')
         if year == 2016:
-            state_dict = self.data2014.count_by_colume('State')
+            state_dict = self.data2016.count_by_colume('State')
         if year == 2017:
-            state_dict = self.data2014.count_by_colume('State')
+            state_dict = self.data2017.count_by_colume('State')
         if year == 2018:
-            state_dict = self.data2014.count_by_colume('State')
+            state_dict = self.data2018.count_by_colume('State')
         if year == 2019:
-            state_dict = self.data2014.count_by_colume('State')
+            state_dict = self.data2019.count_by_colume('State')
         x = list(state_dict.values())[0:10]
         x.append(sum(list(state_dict.values())[10:]))
 
@@ -443,11 +443,11 @@ class data:
 
         # draw the initial pie chart
         ax[0].pie(x = x,labels = labels,labeldistance=1.1,autopct = '%3.2f%%',colors=['#FF0400','#FFFC00','#45D304','#07D09C','#36D3FD','#2C02FE','#FD02FE','#FC50D8','#F18EB1','#D0D6D5','#eeefff'])
-        ax[0].set_position([0.25,0.4,.5,.5])
+        ax[0].set_position([0.25,0.4,.6,.6])
 
         # create the slider
         ax[1].set_position([0.25, 0.35, 0.5, 0.03])
-        risk = Slider(ax[1], 'year',2014, 2019, valinit=2014,valstep=1)
+        risk = Slider(ax[1], 'year',2014, 2019, valinit=2014,valstep=1,valfmt='%0.0f')
 
         risk.on_changed(self.update)
         plt.show()
