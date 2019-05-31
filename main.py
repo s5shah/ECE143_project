@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from gundata import gundata
 import pandas as pd
+import holoviews as hv
+hv.extension('bokeh')
 
 class data:
     def __init__(self,datatype):
@@ -178,7 +180,7 @@ class data:
 
         
 
-    def plot_state_year(self):
+    def plot_state_year(self,year= None):
         '''
         plot pie chart showing how the ten highest state and the other states contribute
         to the total number of incidence 
@@ -192,7 +194,20 @@ class data:
             plt.pause(1)
         '''
         fig,ax = plt.subplots()
-        state_dict = self.dataall.count_by_colume('State')
+        if year == None:
+            state_dict = self.dataall.count_by_colume('State')
+        if year == 2014:
+            state_dict = self.data2014.count_by_colume('State')
+        if year == 2015:
+            state_dict = self.data2014.count_by_colume('State')
+        if year == 2016:
+            state_dict = self.data2014.count_by_colume('State')
+        if year == 2017:
+            state_dict = self.data2014.count_by_colume('State')
+        if year == 2018:
+            state_dict = self.data2014.count_by_colume('State')
+        if year == 2019:
+            state_dict = self.data2014.count_by_colume('State')
         x = list(state_dict.values())[0:10]
         x.append(sum(list(state_dict.values())[10:]))
 
@@ -200,7 +215,7 @@ class data:
         labels.append('others')
         #print(len(x),len(labels))
         ax.clear()
-        ax.pie(x = x,labels = labels,labeldistance=1.1,autopct = '%3.2f%%')
+        ax.pie(x = x,labels = labels,labeldistance=1.1,autopct = '%3.2f%%',colors=['#FF0400','#FFFC00','#45D304','#07D09C','#36D3FD','#2C02FE','#FD02FE','#FC50D8','#F18EB1','#D0D6D5','#eeefff'])
         ax.set_title(f"{self.datatype}(2014-2019.5.14)")
         #plt.pause(0)
 
@@ -332,6 +347,96 @@ class data:
         plt.title('schooltype varies per year')
         plt.legend()
         plt.show()
+
+    def plot_state_year_hv(self,year= None):
+        '''
+        plot pie chart showing how the ten highest state and the other states contribute
+        to the total number of incidence 
+        '''
+        
+        #ani = animation.FuncAnimation(fig, update,frames=800)
+        
+        '''
+        for t in range(6):
+            self.plot_state_year_update(t)
+            plt.pause(1)
+        '''
+        fig,ax = plt.subplots()
+        if year == None:
+            state_dict = self.dataall.count_by_colume('State')
+        if year == 2014:
+            state_dict = self.data2014.count_by_colume('State')
+        if year == 2015:
+            state_dict = self.data2014.count_by_colume('State')
+        if year == 2016:
+            state_dict = self.data2014.count_by_colume('State')
+        if year == 2017:
+            state_dict = self.data2014.count_by_colume('State')
+        if year == 2018:
+            state_dict = self.data2014.count_by_colume('State')
+        if year == 2019:
+            state_dict = self.data2014.count_by_colume('State')
+        x = list(state_dict.values())[0:10]
+        x.append(sum(list(state_dict.values())[10:]))
+
+        labels = list(state_dict.keys())[0:10] 
+        labels.append('others')
+        #print(len(x),len(labels))
+    def top5(self, b5):
+        assert isinstance(b5,list)
+        state_dict_2014 = self.data2014.count_by_colume('State')
+        state_dict_2015 = self.data2015.count_by_colume('State')
+        state_dict_2016 = self.data2016.count_by_colume('State')
+        state_dict_2017 = self.data2017.count_by_colume('State')
+        state_dict_2018 = self.data2018.count_by_colume('State')
+        state_dict_2019 = self.data2019.count_by_colume('State')
+        x2014 = []
+        x2015 = []
+        x2016 = []
+        x2017 = []
+        x2018 = []
+        x2019 = []
+        for i in range(len(b5)):
+            if b5[i] in state_dict_2014:
+                x2014.append(state_dict_2014[b5[i]]/self.data2014.get_total_insidence())
+            else:
+                x2014.append(0)
+            if b5[i] in state_dict_2015:
+                x2015.append(state_dict_2015[b5[i]]/self.data2015.get_total_insidence())
+            else:
+                x2015.append(0)
+            if b5[i] in state_dict_2016:
+                x2016.append(state_dict_2016[b5[i]]/self.data2016.get_total_insidence())
+            else:
+                x2016.append(0)
+            if b5[i] in state_dict_2017:
+                x2017.append(state_dict_2017[b5[i]]/self.data2017.get_total_insidence())
+            else:
+                x2017.append(0)
+            if b5[i] in state_dict_2018:
+                x2018.append(state_dict_2018[b5[i]]/self.data2018.get_total_insidence())
+            else:
+                x2018.append(0)
+            if b5[i] in state_dict_2019:
+                x2019.append(state_dict_2019[b5[i]]/self.data2019.get_total_insidence())
+            else:
+                x2019.append(0)
+        a2014 = pd.DataFrame(index = np.arange(5),data = {'state':b5,'ratio' :x2014,'year':'2014'})
+        a2015 = pd.DataFrame(index = np.arange(5),data = {'state':b5,'ratio' :x2015,'year':'2015'})
+        a2016 = pd.DataFrame(index = np.arange(5),data = {'state':b5,'ratio' :x2016,'year':'2016'})
+        a2017 = pd.DataFrame(index = np.arange(5),data = {'state':b5,'ratio' :x2017,'year':'2017'})
+        a2018 = pd.DataFrame(index = np.arange(5),data = {'state':b5,'ratio' :x2018,'year':'2018'})
+        a2019 = pd.DataFrame(index = np.arange(5),data = {'state':b5,'ratio' :x2019,'year':'2019'})
+        b= pd.concat([a2014,a2015,a2016,a2017,a2018,a2019])
+        edata = hv.Dataset(data=b,kdims=['state'])
+        edata.to(hv.Bars,'state','ratio',groupby='year').options(height=200)
+        return edata
+
+
+
+
+
+        
 
 
 
