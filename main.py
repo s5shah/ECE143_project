@@ -6,6 +6,9 @@ import pandas as pd
 import holoviews as hv
 from matplotlib.widgets import Slider, Button, RadioButtons
 hv.extension('bokeh')
+from matplotlib import cm
+cs = cm.Set3(np.arange(6)/6.)
+cs10 = cm.Set3(np.arange(11)/11.)
 
 class data:
     def __init__(self,datatype):
@@ -216,7 +219,7 @@ class data:
         labels.append('others')
         #print(len(x),len(labels))
         ax.clear()
-        ax.pie(x = x,labels = labels,labeldistance=1.1,autopct = '%3.2f%%',colors=['#FF0400','#FFFC00','#45D304','#07D09C','#36D3FD','#2C02FE','#FD02FE','#FC50D8','#F18EB1','#D0D6D5','#eeefff'])
+        ax.pie(x = x,labels = labels,labeldistance=1.1,colors=cs10)
         ax.set_title(f"{self.datatype}(2014-2019.5.14)")
         #plt.pause(0)
 
@@ -433,20 +436,27 @@ class data:
         edata.to(hv.Bars,'state','percentage',groupby='year').options(height=200)
         return edata
     def top10_pie(self):
-        global ax,fig,risk
+        global ax,fig,risk,top_10
+        top_10 = list(self.dataall.count_by_colume('State').keys())[0:5] 
+
         state_dict = self.data2014.count_by_colume('State')
-        x = list(state_dict.values())[0:10]
-        x.append(sum(list(state_dict.values())[10:]))
-        labels = list(state_dict.keys())[0:10] 
-        labels.append('others')
+        x = []
+        for i in range(5):
+            if top_10[i] in state_dict:
+                x.append(state_dict[top_10[i]])
+            else:
+                x.append(0)
+        x.append(self.data2014.get_total_insidence()-sum(x))
+        labels = top_10+['others']
+
         fig, ax = plt.subplots(2)
 
         # draw the initial pie chart
-        ax[0].pie(x = x,labels = labels,labeldistance=1.1,autopct = '%3.2f%%',colors=['#FF0400','#FFFC00','#45D304','#07D09C','#36D3FD','#2C02FE','#FD02FE','#FC50D8','#F18EB1','#D0D6D5','#eeefff'])
-        ax[0].set_position([0.25,0.4,.6,.6])
+        ax[0].pie(x = x,labels = labels,labeldistance=1.1,colors=cs)
+        ax[0].set_position([0.2,0.4,.5,.5])
 
         # create the slider
-        ax[1].set_position([0.25, 0.35, 0.5, 0.03])
+        ax[1].set_position([0.25, 0.3, 0.5, 0.03])
         risk = Slider(ax[1], 'year',2014, 2019, valinit=2014,valstep=1,valfmt='%0.0f')
 
         risk.on_changed(self.update)
@@ -457,27 +467,39 @@ class data:
         ax[0].clear()
         year = int(risk.val)
         #print(year)
-        
         if year == None:
             state_dict = self.dataall.count_by_colume('State')
+            state_sum = self.dataall.get_total_insidence()
         if year == 2014:
             state_dict = self.data2014.count_by_colume('State')
+            state_sum = self.data2014.get_total_insidence()
         if year == 2015:
             state_dict = self.data2015.count_by_colume('State')
+            state_sum = self.data2015.get_total_insidence()
         if year == 2016:
             state_dict = self.data2016.count_by_colume('State')
+            state_sum = self.data2016.get_total_insidence()
         if year == 2017:
             state_dict = self.data2017.count_by_colume('State')
+            state_sum = self.data2017.get_total_insidence()
         if year == 2018:
             state_dict = self.data2018.count_by_colume('State')
+            state_sum = self.data2018.get_total_insidence()
         if year == 2019:
             state_dict = self.data2019.count_by_colume('State')
-        x = list(state_dict.values())[0:10]
-        x.append(sum(list(state_dict.values())[10:]))
+            state_sum = self.data2019.get_total_insidence()
+        x = []
+        for i in range(5):
+            if top_10[i] in state_dict:
+                x.append(state_dict[top_10[i]])
+            else:
+                x.append(0)
+        x.append(state_sum-sum(x))
+        labels = top_10+['others']
 
-        labels = list(state_dict.keys())[0:10] 
-        labels.append('others')
-        ax[0].pie(x = x,labels = labels,labeldistance=1.1,autopct = '%3.2f%%',colors=['#FF0400','#FFFC00','#45D304','#07D09C','#36D3FD','#2C02FE','#FD02FE','#FC50D8','#F18EB1','#D0D6D5','#eeefff'])
+        pat = ax[0].pie(x = x,labeldistance=1.1,colors=cs)
+        #plt.legend(pat[0],labels, loc=((0.75,0.3)))
+        plt.legend(pat[0],labels, loc=(0.75,0.3))
         fig.canvas.draw_idle()
 
 
