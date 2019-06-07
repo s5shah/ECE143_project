@@ -7,6 +7,9 @@ Requirement Module:
 ```
 	1.BeautifulSoup
 	2.chardet
+	3.numpy
+	4.matplotlib
+	5.pandas
 ```
 
 Execute:
