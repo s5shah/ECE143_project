@@ -31,7 +31,7 @@ def scrape_gva(data):
     assert len(data) == 1
     assert data in ['m', 'o']
     
-    for year in range(2014,2020):
+    for year in range(2014,2019):
         if data == 'm':
             url = f"https://www.gunviolencearchive.org/reports/mass-shooting?year={year}"
             fname = f"Mass_Shootings_{year}.csv"
@@ -62,3 +62,6 @@ def scrape_gva(data):
         #Stuff ready here. Write to CSV after using pandas
         df = pd.DataFrame(np.array(stuff).reshape(int((len(stuff))/6), 6), columns = ['Incident Date', 'State', 'City/County', 'Address', '# killed', '# injured'])
         df.to_csv(fname, encoding='utf-8', index=False)
+        
+scrape_gva('m')
+scrape_gva('o')

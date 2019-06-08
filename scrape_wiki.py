@@ -55,7 +55,7 @@ def scrape_wiki():
         df['Injuries'][i] = ''.join(j for j in df['Injuries'][i] if j.isdigit())
         
     for i in range(len(df['Date'])):
-        if(int(df['Date'][i][-4:]) < 2013):
+        if (int(df['Date'][i][-4:]) < 2014) or (int(df['Date'][i][-4:]) > 2018):
             df = df.drop(i, axis=0)
             
     df = df.reset_index()
@@ -69,3 +69,5 @@ def scrape_wiki():
     df_grouped = df.groupby('Year')
     for i in df_grouped.indices:
         df_grouped.get_group(i).to_csv(f'School_Schootings_Casualties_{i}.csv', encoding='utf-8', index=False, columns = ['Date', 'Location', 'Deaths', 'Injuries'])    
+        
+scrape_wiki()

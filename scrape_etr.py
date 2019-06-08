@@ -42,5 +42,7 @@ def scrape_etr():
     
     #Generate a grouped dataframe and write the groups to their respective csv files    
     df_grouped = df.groupby('Year')
-    for i in df_grouped.indices:
+    for i in range(2014, 2019):
         df_grouped.get_group(i).to_csv(f'School_Schootings_{i}.csv', encoding='utf-8', index=False, columns = ['Date', 'City', 'State', 'School Name', 'School Type'])
+        
+scrape_etr()
