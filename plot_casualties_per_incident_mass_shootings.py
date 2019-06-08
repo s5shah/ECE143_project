@@ -1,3 +1,10 @@
+'''
+This script generates a plot the shows the casualties per incident for mass shootings throughout United States between the
+years 2014 and 2018.
+Before running this script, you need the data sets, which can either be scraped using the web crawler tool provided or
+from https://drive.google.com/open?id=1Nj4TVz5X7tNc0DFDhLBgOsNAjVuuhSqY
+'''
+
 import matplotlib.pyplot as plt
 from gundata import gundata
 import pandas as pd
