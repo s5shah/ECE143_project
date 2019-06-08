@@ -56,4 +56,5 @@ To run the web scraping tools,
 ### Generating the plots
 To generate the plots,
 1. You will need the datasets. For that, you can either scrape it, or download it from the link provided. 
-2. You can use either the Jupyter Notebook (plots.ipynb), or the scripts provided to generate the plots (plot_num_mass_shootings.py, plot_num_school_shootings.py, etc.).
+2. Extract all the .csv files into the main folder.
+3. You can use either the Jupyter Notebook (plots.ipynb), or the scripts provided to generate the plots (plot_num_mass_shootings.py, plot_num_school_shootings.py, etc.).

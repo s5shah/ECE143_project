@@ -68,6 +68,6 @@ def scrape_wiki():
     
     df_grouped = df.groupby('Year')
     for i in df_grouped.indices:
-        df_grouped.get_group(i).to_csv(f'School_Schootings_Casualties_{i}.csv', encoding='utf-8', index=False, columns = ['Date', 'Location', 'Deaths', 'Injuries'])    
+        df_grouped.get_group(i).to_csv(f'School_Shootings_Casualties_{i}.csv', encoding='utf-8', index=False, columns = ['Date', 'Location', 'Deaths', 'Injuries'])    
         
 scrape_wiki()
