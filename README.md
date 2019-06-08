@@ -1,9 +1,9 @@
 # **Analysis of Gun Violence throughout United States (Group 16)**
 ### Team Members
+* Sneh Shah
 * Hao Mei
 * Ke Li
 * Li-Kuo Lin
-* Sneh Shah
 
 ### Problem
 To analyze the occurrences of different types of gun violence, mainly mass shootings, school shootings, and officer shootings, over a timeline to assess the situation.
@@ -29,7 +29,7 @@ To generate our data set, we scraped gunviolencearchive.org, everytownresearch.o
 7. matplotlib
 8. plotly
 
-##### Browser automation using selenium
+#### Browser automation using selenium
 The scraping tools use selenium with chrome and beautifulsoup. To install selenium, use
 `pip install selenium`
 and download chromedriver.exe from
@@ -40,17 +40,20 @@ The chromedriver.exe has to be added to the path variables. To do so, follow the
 3. Under System Variables, select path, and click edit
 4. Click new, and add the path to chromedriver.exe
 
-##### Install plotly to generate pie charts
+#### Install plotly to generate pie charts
 To install plotly, use
 `pip install plotly`
 
-### Running the codes
-To run the codes, run scrape_gva.py, scrape_etr.py, and scrape_wiki.py to generate the data sets. Run ......, etc. to generate the plots.
+### Data Set
+The data set is available at
+`https://drive.google.com/open?id=1Nj4TVz5X7tNc0DFDhLBgOsNAjVuuhSqY`
 
+### Generating the Data Set
+To run the web scraping tools, 
+1. Make sure you have selenium and chromedriver.exe, and that chromedriver.exe is included in your path variables.
+2. Run the scraping tools scrape_gva.py, scrape_etr.py, and scrape_wiki.py.
 
-
-
-
-
-
-
+### Generating the plots
+To generate the plots,
+1. You will need the datasets. For that, you can either scrape it, or download it from the link provided. 
+2. You can use either the Jupyter Notebook (plots.ipynb), or the scripts provided to generate the plots (plot_num_mass_shootings.py, plot_num_school_shootings.py, etc.).
